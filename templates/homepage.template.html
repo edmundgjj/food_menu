@@ -2,10 +2,16 @@
 
 {%block content %}
 
+<a class="btn btn-primary" href="{{ url_for('show_create_product') }}" role="button">Add New Item</a>
+
+<div class = "container">
 {% for each_product in all_products %}
 <p>{{each_product.product_name}}</p>
 <p>{{each_product.product_price}}</p>
 <p>{{each_product.product_desc}}</p>
 {% endfor %}
+</div>
+
+
 
 {%endblock%}
