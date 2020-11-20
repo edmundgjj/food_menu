@@ -77,6 +77,24 @@ def process_edit_product(product_id):
     })
     return redirect(url_for('show_homepage'))
 
+@app.route('/delete/<product_id>')
+def show_confirm_delete(product_id):
+    # should use find_one if I am only expecting one result
+    product_to_be_deleted = db.product.find_one({
+        '_id': ObjectId(product_id)
+    })
+    return render_template('show_confirm_delete.template.html',
+                           product=product_to_be_deleted)
+
+
+@app.route('/delete/<product_id>', methods=["POST"])
+def confirm_delete(product_id):
+    db.product.remove({
+        "_id": ObjectId(product_id)
+    })
+    return redirect(url_for('show_homepage'))
+
+
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
