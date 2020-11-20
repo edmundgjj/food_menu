@@ -9,7 +9,7 @@ load_dotenv()
 # declare the global variables to store the URL to the Mongo database
 # and the name of the database that we want to use
 MONGO_URL = os.environ.get('MONGO_URL')
-DB_NAME = "product"
+DB_NAME = "store_manager"
 
 # create the Mongo client
 client = pymongo.MongoClient(MONGO_URL)
@@ -23,4 +23,12 @@ app.secret_key = os.environ.get('SECRET_KEY')
 
 @app.route('/')
 def show_homepage():
-    return render_template('homepage.template.html')
+    all_products = db.product.find()
+    return render_template('homepage.template.html',
+                           all_products=all_products)
+
+# "magic code" -- boilerplate
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)

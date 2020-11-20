@@ -1,9 +1,11 @@
 {% extends 'base.template.html' %}
 
 {%block content %}
-<!-- <a href="{{ url_for('show_create_animal') }}" class="btn btn-success mt-1 mb-1">Add New Animal</a> -->
 
-{% for each_product in product %}
-
+{% for each_product in all_products %}
+<p>{{each_product.product_name}}</p>
+<p>{{each_product.product_price}}</p>
+<p>{{each_product.product_desc}}</p>
+{% endfor %}
 
 {%endblock%}
