@@ -52,6 +52,32 @@ def process_create_product():
     return redirect(url_for('show_homepage'))
 
 
+@app.route('/edit/<product_id>')
+def show_edit_product(product_id):
+    product = db.product.find_one({
+        '_id': ObjectId(product_id)
+    })
+    return render_template('edit_product.template.html', product=product)
+
+
+@app.route('/edit/<product_id>', methods=["POST"])
+def process_edit_product(product_id):
+    product_name = request.form.get('product_name')
+    product_price = float(request.form.get('product_price'))
+    product_desc = request.form.get('product_desc')
+
+    db.product.update_one({
+        "_id": ObjectId(product_id)
+    }, {
+        '$set': {
+            'product_name': product_name,
+            'product_price': product_price,
+            'product_desc': product_desc,
+        }
+    })
+    return redirect(url_for('show_homepage'))
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
