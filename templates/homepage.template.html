@@ -8,17 +8,8 @@
 
 <a class="mt-4 btn btn-primary" href="{{ url_for('show_create_product') }}" role="button">Add New Item</a>
 
-<div class="mt-4 card-columns">
-{% for each_product in all_products %}
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{each_product.product_name}}</h5>
-      <p class="card-text">{{each_product.product_desc}}</p>
-      <p class="card-text">{{each_product.product_price}}</p>
-      <a href="{{ url_for('show_edit_product', product_id=each_product._id) }}" class="btn btn-success">Edit</a>
-      <a href="{{ url_for('show_confirm_delete', product_id=each_product._id)}}" class="btn btn-danger">Delete</a>
-    </div>
-</div>
-{% endfor %}
+<a class="mt-4 btn btn-primary" href="{{ url_for('show_search') }}" role="button">Search Item</a>
+
+{%include 'product_listing.template.html' %}
 
 {%endblock%}

@@ -23,6 +23,7 @@ def show_homepage():
     return render_template('homepage.template.html',
                            all_products=all_products)
 
+
 @app.route('/customer')
 def show_customer_homepage():
     all_products = db.product.find()
@@ -86,7 +87,6 @@ def process_edit_product(product_id):
 
 @app.route('/delete/<product_id>')
 def show_confirm_delete(product_id):
-    # should use find_one if I am only expecting one result
     product_to_be_deleted = db.product.find_one({
         '_id': ObjectId(product_id)
     })
@@ -100,6 +100,32 @@ def confirm_delete(product_id):
         "_id": ObjectId(product_id)
     })
     return redirect(url_for('show_homepage'))
+
+
+@app.route('/search')
+def show_search():
+    return render_template('search.template.html')
+
+
+@app.route('/search', methods=["POST"])
+def process_search():
+    product_name = request.form.get('product_name')
+
+    criteria = {}
+
+    if product_name:
+        criteria["product_name"] = {
+            '$regex': product_name,
+            '$options': 'i'
+        }
+
+    searched_by = [product_name]
+
+    results = db.product.find(criteria)
+
+    return render_template('display_results.template.html',
+                           all_products=results,
+                           searched_by = searched_by)
 
 
 # "magic code" -- boilerplate

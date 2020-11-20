@@ -1,0 +1,23 @@
+<div class="row">
+  {% for each_product in all_products %}
+  <div class="col-sm-6 col-lg-4">
+    <div class="card mt-3 mb-3">
+      <div class="card-body ">
+        <h5 class="card-title">{{each_product.product_name}}</h5>
+        <p class="card-text">{{each_product.product_desc}}</p>
+        <p class="card-text">{{each_product.product_price}}</p>
+        <a
+          href="{{ url_for('show_edit_product', product_id=each_product._id) }}"
+          class="btn btn-success"
+          >Edit</a
+        >
+        <a
+          href="{{ url_for('show_confirm_delete', product_id=each_product._id)}}"
+          class="btn btn-danger"
+          >Delete</a
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,20 @@
+{% extends 'base.template.html' %}
+
+{%block title%} Nanyang Cafe Food Menu {%endblock%}
+
+{%block content %}
+
+<h1 class="mt-4">Nanyang Cafe Food Menu</h1>
+
+<div class="mt-4 card-columns">
+{% for each_product in all_products %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{each_product.product_name}}</h5>
+      <p class="card-text">{{each_product.product_desc}}</p>
+      <p class="card-text">{{each_product.product_price}}</p>
+    </div>
+</div>
+{% endfor %}
+
+{%endblock%}
