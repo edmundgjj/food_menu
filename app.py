@@ -23,6 +23,12 @@ def show_homepage():
     return render_template('homepage.template.html',
                            all_products=all_products)
 
+@app.route('/customer')
+def show_customer_homepage():
+    all_products = db.product.find()
+    return render_template('show_customer_homepage.template.html',
+                           all_products=all_products)
+
 
 @app.route('/create')
 def show_create_product():
@@ -77,6 +83,7 @@ def process_edit_product(product_id):
     })
     return redirect(url_for('show_homepage'))
 
+
 @app.route('/delete/<product_id>')
 def show_confirm_delete(product_id):
     # should use find_one if I am only expecting one result
@@ -93,7 +100,6 @@ def confirm_delete(product_id):
         "_id": ObjectId(product_id)
     })
     return redirect(url_for('show_homepage'))
-
 
 
 # "magic code" -- boilerplate
