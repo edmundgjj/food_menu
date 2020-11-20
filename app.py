@@ -120,17 +120,23 @@ def process_search():
             '$options': 'i'
         }
 
+    if len(category) > 0:
+        criteria['category'] = {
+                '$in': category
+            }
+        
+
     searched_by = [product_name]
 
     results = db.product.find(criteria)
 
     return render_template('display_results.template.html',
-                           all_products=results,
+                           all_products = results,
                            searched_by = searched_by)
 
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
+    app.run(host = os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
