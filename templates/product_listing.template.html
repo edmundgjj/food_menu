@@ -17,6 +17,11 @@
           >Delete</a
         >
       </div>
+      <div class="card-footer text-muted">
+        {% for each_category in each_product.category %}
+            <span class="badge badge-dark">{{each_category}}</span>
+        {% endfor %}
+        </div>
     </div>
   </div>
   {% endfor %}
