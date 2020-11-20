@@ -110,6 +110,7 @@ def show_search():
 @app.route('/search', methods=["POST"])
 def process_search():
     product_name = request.form.get('product_name')
+    category = request.form.getlist('category')
 
     criteria = {}
 
