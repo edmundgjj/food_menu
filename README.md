@@ -1,45 +1,50 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Digital Food Menu Manager #
+By: **Edmund Goh Jun Jie** -- *Code Institute Batch 8* -- 
+<br>
 
-Welcome edmundgjj,
+## OVERVIEW ##
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+This is a website for a restaurant to showcase their menu digitally especially in this day and age of contactless menu. 
+Restaurant managers can ask customers to scan a QR code that brings them to a mobile-responsive digital menu. 
 
-## Gitpod Reminders
+## Database Planning ##
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Product Object (For each menu item)
+{
+    "id";
+    "product_name";
+    "product_price";
+    "product_desc";
+    "category":[];
+}
 
-`python3 -m http.server`
+## USER EXPERIENCE ## 
 
-A blue button should appear to click: *Make Public*,
+- Each menu item is displayed in a form of a card to make it easy to discern each menu item's name, price and description easily. 
+- As an administrator, I can visit the administrator URL via "/" to make adjustments to the menu such as create a new menu item, edit a menu item or delete a menu item. 
+- The customer facing URL is "/customer" which hides the functionality to create and edit menu items. 
+- Both administrator and customer can search the menu items based the name of the item. 
+- To help customers find healthy food option and store recommended option easily, they can do so via the filter in the search page. 
+- The emphasis of the menu is for customers to be able to see all the items sold by the store, hence the emphasis of the design is via that of a card for each item. 
+- The menu is responsive and displays 3 columns of cards for desktop browsing, 2 columns for medium displays and only 1 column for mobile display. 
 
-Another blue button should appear to click: *Open Browser*.
+## FURTHER IMPROVEMENTS ## 
+- The ability to upload menu images 
+- The ability to group menu items by category
+- The ability to edit store information such as store name and store description and add store logo. 
+- The ability to accept ordering directly on the digital menu. 
+- Administrator account management where a username and login is required to log into website. 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## TECHNOLOGY USED ## 
 
-A blue button should appear to click: *Make Public*,
+- HTML, CSS, JS, Bootstrap 4
+- Python, Flask, Jinja 2, MongoDB
+- Heroku 
 
-Another blue button should appear to click: *Open Browser*.
+## TESTING ## 
+- Manual testing is done on IPhone 11 Pro Max and Macbook Pro 16-Inch to ensure that the menu is displayed correctly. 
+- Check that validation works where user is not able to create an item without providing product name, product description and price. 
+- Check that the search results work based on the product name and category filters applied. 
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+## DEPLOYMENT ## 
+- Deployment is done via Heroku
