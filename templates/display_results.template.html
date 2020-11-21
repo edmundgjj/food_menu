@@ -3,8 +3,7 @@
 {%block content%}
 
 <h1>Display Search Results</h1>
-<p>Searching by {{",".join(searched_by)}}
-
+<p>Searching by {{",".join(searched_by)}}</p>
 {%include 'product_listing.template.html' %}
 
 <a class="mt-4 btn btn-secondary" href="{{ url_for('show_homepage') }}" role="button">Go To Homepage</a>
