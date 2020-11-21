@@ -1,23 +1,32 @@
-{% extends 'base.template.html' %}
-
-{%block title %} Nanyang Cafe - Create Product {%endblock%}
-
-{%block content %}
-<h1 class="mt-4"> Create Product </h1>
+{% extends 'base.template.html' %} {%block title %} Nanyang Cafe - Create
+Product {%endblock%} {%block content %}
+<h1 class="mt-4">Create Product</h1>
 
 <form method="POST">
-    <div>
-        <label class="form-label">Product Name</label>
-        <input type="text" class="form-control" name="product_name"/>
-    </div>
-    <div>
-        <label class="form-label">Price</label>
-        <input type="text" class="form-control" name="product_price"/>
-    </div>
-    <div>
-        <label class="form-label">Description</label>
-        <textarea class="form-control" rows="3" name="product_desc"></textarea>
-    </div>
-    <input type="submit" class="btn btn-primary"/>
+  <div>
+    <label class="form-label">Product Name</label>
+    <input type="text" class="form-control" name="product_name" />
+  </div>
+  <div>
+    <label class="form-label">Price</label>
+    <input type="text" class="form-control" name="product_price" />
+  </div>
+  <div>
+    <label class="form-label">Description</label>
+    <textarea class="form-control" rows="3" name="product_desc"></textarea>
+  </div>
+  <div class="col-12">
+    <input type="checkbox" name="category" value="Healthy"/> Healthy 
+    <input type="checkbox" name="category" value="Recommended"/> Recommended 
+    <input type="checkbox" name="category" value="Vegetarian" /> Vegetarian
+  </div>
+  <input type="submit" class="btn btn-primary" />
 </form>
+
+<a
+  class="mt-4 btn btn-secondary"
+  href="{{ url_for('show_homepage') }}"
+  role="button"
+  >Go To Homepage</a
+>
 {%endblock%}

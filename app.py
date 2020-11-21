@@ -41,6 +41,7 @@ def process_create_product():
     product_name = request.form.get('product_name')
     product_price = request.form.get('product_price')
     product_desc = request.form.get('product_desc')
+    category = request.form.getlist('my_checkbox')
     if product_price.isnumeric():
         product_price = float(product_price)
 
@@ -72,6 +73,7 @@ def process_edit_product(product_id):
     product_name = request.form.get('product_name')
     product_price = float(request.form.get('product_price'))
     product_desc = request.form.get('product_desc')
+    category = request.form.getlist('category')
 
     db.product.update_one({
         "_id": ObjectId(product_id)
@@ -80,6 +82,7 @@ def process_edit_product(product_id):
             'product_name': product_name,
             'product_price': product_price,
             'product_desc': product_desc,
+            'category': category
         }
     })
     return redirect(url_for('show_homepage'))
